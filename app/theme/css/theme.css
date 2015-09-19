@@ -1033,7 +1033,7 @@ input.text:focus {
 .hero-home {
 	background-image: url("../images/bg-tree.jpg");
 	background-color: #523129;
-	min-height: 400px;
+	min-height: 1260px;
 }
 
 .hero-home h1 {
