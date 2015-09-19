@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn'
   });
 
-  //grunt.loadNpmTasks('grunt-build-control');
+  // Load deploy task libraries.
   grunt.loadNpmTasks('grunt-build-control');
 
   // Configurable paths for the application
