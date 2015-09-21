@@ -1050,7 +1050,8 @@ input.text:focus {
 @media ( min-width: 1200px ) {
 	.hero-home {
 		background-color: #5c6164;
-		background-image: url("../img/frame-1.jpg");
+		background-image: url("../../images/bg-tree.jpg");
+	  min-height: 2000px;
 	}
 
 }
