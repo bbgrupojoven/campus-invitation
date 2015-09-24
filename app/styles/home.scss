@@ -34,4 +34,38 @@
   }
 }
 
+// Tabs
+.nav {
+  margin: 0 auto;
+  display: table;
+
+  li {
+    margin: 10px 80px;
+    width: 100px;
+
+    a {
+      background-color: white;
+
+      &:hover,
+      &:focus {
+        background-color: #00557A;
+        color: white;
+      }
+    }
+  }
+}
+
+.nav-pills {
+  li.active {
+    a,
+    a:hover,
+    a:focus  {
+      color: white;
+      background-color: #00557A;
+    }
+  }
+}
+
+
+
 
