@@ -66,6 +66,29 @@
   }
 }
 
+// Tablets
+@media (max-width: 767px) {
+  .nav {
+    li {
+      margin: 10px 60px;
+
+    }
+  }
+}
+
+// Phones
+@media (max-width: 320px) {
+  h1 {
+
+  }
+
+  .nav {
+    li {
+      margin: 10px 60px;
+
+    }
+  }
+}
 
 
 
