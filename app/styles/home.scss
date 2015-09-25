@@ -66,25 +66,25 @@
   }
 }
 
-// Tablets
+// Tablets and Phones
 @media (max-width: 767px) {
-  .nav {
-    li {
-      margin: 10px 60px;
-
-    }
-  }
-}
-
-// Phones
-@media (max-width: 320px) {
   h1 {
+    font-size: 30px;
+  }
 
+  .subheading {
+    font-size: smaller;
   }
 
   .nav {
     li {
-      margin: 10px 60px;
+      margin: 10px 15px;
+      width: 70px;
+
+      a {
+        padding: 10px 10px;
+        font-size: small;
+      }
 
     }
   }
