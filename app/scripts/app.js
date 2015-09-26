@@ -17,7 +17,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap.tabs',
+    'template/tabs/tab.html',
+    'template/tabs/tabset.html'
   ])
   .config(function ($routeProvider) {
     $routeProvider

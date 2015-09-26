@@ -1031,7 +1031,7 @@ input.text:focus {
 /* home hero specific pages */
 
 .hero-home {
-	background-image: url("../images/bg-tree.jpg");
+	background-image: url("../../images/bg-tree.jpg");
 	background-color: #523129;
 	min-height: 1260px;
 }
@@ -1050,7 +1050,8 @@ input.text:focus {
 @media ( min-width: 1200px ) {
 	.hero-home {
 		background-color: #5c6164;
-		background-image: url("../img/frame-1.jpg");
+		background-image: url("../../images/bg-tree.jpg");
+	  min-height: 2000px;
 	}
 
 }
@@ -1104,7 +1105,7 @@ input.text:focus {
 .iphone-mobile {
 	height: 200px;
 	width: 100%;
-	background: url("../images/bg-tree.jpg") 6% 0 no-repeat;
+	background: url("../../images/bg-tree.jpg") 6% 0 no-repeat;
 	background-size: auto 100%;
 }
 

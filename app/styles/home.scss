@@ -1,0 +1,145 @@
+.hero-home {
+  color: #00557A;
+}
+
+.level-hero  {
+  .heading {
+    color: inherit;
+  }
+
+  &.hero-home .btn {
+    min-width: 90px;
+  }
+}
+
+.heading-top {
+  margin-top: 30px !important;
+}
+
+.content-footer {
+  margin-top: 10px;
+
+  p {
+    color: white;
+  }
+}
+
+// Tabs
+.nav {
+  margin: 0 auto;
+  display: table;
+
+  li {
+    margin: 10px 80px;
+    width: 100px;
+
+    a {
+      background-color: white;
+
+      &:hover,
+      &:focus {
+        background-color: #00557A;
+        color: white;
+      }
+    }
+  }
+}
+
+.nav-pills {
+  li.active {
+    a,
+    a:hover,
+    a:focus  {
+      color: white;
+      background-color: #00557A;
+    }
+  }
+}
+
+// Tab content
+.content-body {
+  .tab-content {
+    min-height: 550px;
+
+    .btn-register-campus {
+      background-color: #F4342E;
+      color: white;
+    }
+
+    .btn-register-campus:hover {
+      color: white;
+      background-color: #F4746E;
+    }
+  }
+}
+
+// Content Form
+.content-form {
+  display: table;
+  margin: 0 auto;
+  padding-top: 10px;
+  background-color: white;
+  border-radius: 10px;
+
+  .form-group {
+    margin: 10px;
+    display: flex;
+
+    label {
+      font-size: 12px;
+      color: #00557A;
+      text-align: left;
+
+      &.control-one-line {
+        line-height: 1;
+      }
+
+      .require {
+        color: red;
+      }
+    }
+  }
+}
+
+// Tablets and Phones
+@media (max-width: 767px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  .subheading {
+    font-size: smaller;
+  }
+
+  .nav {
+    li {
+      margin: 10px 15px;
+      width: 70px;
+
+      a {
+        padding: 10px 10px;
+        font-size: small;
+      }
+
+    }
+  }
+
+  // Tab content
+  .content-body {
+    .tab-content {
+      min-height: 320px;
+    }
+  }
+
+  // Footer
+  .content-footer {
+    margin-top: 30px;
+
+    p {
+      color: white;
+    }
+  }
+}
+
+
+
