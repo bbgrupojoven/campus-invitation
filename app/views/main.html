@@ -11,8 +11,8 @@
 
   <div class="container content-body">
     <tabset type="pills">
-      <tab heading="Info" active="false">Info</tab>
-      <tab heading="Detalle">
+      <tab class="hidden" heading="Info">Info</tab>
+      <tab class="hidden" heading="Detalle">
         <b>Catálogo del curso</b>
         El Catálogo del curso provee una breve descripción de los cursos ofrecidos por el Centro de Estudios, incluyendo los prerrequisitos, fechas y horas en las que se ofrece el curso, y los textos que se usan durante el curso.
 
@@ -25,47 +25,50 @@
         <b>Registro</b>
         El primer paso para accesar a todo lo que ofrece el Centro de Estudios es el registro. Una vez registrados podrán inscribirse a los cursos, accesar al programa de Auto-estudio y participar en el Foro Estudiantil una vez iniciados los cursos
       </tab>
-      <tab heading="Registro">
-        <form name="formRegistration" class="contact col-xs-6" ng-submit="register(student)">
+      <tab class="hidden" heading="Registro" active="true">
+        <div class="content-form row">
+          <form name="formRegistration" class="contact" ng-submit="register(student)">
 
-          <div class="form-group">
-            <label for="firstName" class="col-xs-2 control-label">Nombre</label>
-            <div class="col-xs-10">
-              <input ng-model="student.firstName" type="text" class="form-control" id="firstName" placeholder="Nombres">
+            <div class="form-group">
+              <label for="firstName" class="col-xs-2 control-label">Nombre</label>
+              <div class="col-xs-10">
+                <input ng-model="student.firstName" type="text" class="form-control" id="firstName" placeholder="Nombres">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="lastName" class="col-xs-2 control-label">Apellido</label>
-            <div class="col-xs-10">
-              <input ng-model="student.lastName" type="text" class="form-control" id="lastName" placeholder="Appellidos">
+            <div class="form-group">
+              <label for="lastName" class="col-xs-2 control-label">Apellido</label>
+              <div class="col-xs-10">
+                <input ng-model="student.lastName" type="text" class="form-control" id="lastName" placeholder="Apellidos">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-xs-2 control-label">Correo Electrónico</label>
-            <div class="col-xs-10">
-              <input ng-model="student.lastName" type="text" class="form-control" id="email" placeholder="Appellidos">
+            <div class="form-group">
+              <label for="email" class="col-xs-2 control-label">Correo Electrónico</label>
+              <div class="col-xs-10">
+                <input ng-model="student.lastName" type="text" class="form-control" id="email" placeholder="Correo Electrónico">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="lastName" class="col-xs-2 control-label">Apellido</label>
-            <div class="col-xs-10">
-              <input ng-model="student.lastName" type="text" class="form-control" id="lastName" placeholder="Appellidos">
+            <div class="form-group">
+              <label class="col-xs-2 control-label">País</label>
+              <ng-select id="country"></ng-select>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-              <button type="submit" class="btn btn-default">Sign in</button>
+            <div class="form-group">
+              <label class="col-xs-2 control-label">Ciudad <span class="required">*</span></label>
+              <ng-select id="city"></ng-select>
             </div>
-            <div class="h2 mb-20">
-              <a class="btn btn-register-campus" href="#">
-                Registrate
-              </a>
+            <div class="form-group">
+              <div class="h2 mb-20">
+                <a class="btn btn-register-campus" href="#">
+                  Registrate Gratis
+                </a>
+              </div>
+
             </div>
 
-          </div>
+          </form>
 
 
-        </form>
+        </div>
+
       </tab>
     </tabset>
   </div>

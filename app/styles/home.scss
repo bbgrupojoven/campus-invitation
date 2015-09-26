@@ -74,6 +74,18 @@
   }
 }
 
+// Content Form
+.content-form {
+  display: table;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+
+  label {
+    font-size: 12px;
+  }
+}
+
 // Tablets and Phones
 @media (max-width: 767px) {
   h1 {
