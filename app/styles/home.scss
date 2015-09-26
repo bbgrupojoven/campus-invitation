@@ -20,8 +20,7 @@
   margin-top: 10px;
 
   p {
-    color: #0A4863;
-    font-weight: bold;
+    color: white;
   }
 }
 
@@ -62,14 +61,14 @@
   .tab-content {
     min-height: 550px;
 
-    a.btn-register-campus {
+    .btn-register-campus {
       background-color: #F4342E;
       color: white;
     }
 
-    a.btn-register-campus:hover {
-      color: #F4342E;
-      background-color: white;
+    .btn-register-campus:hover {
+      color: white;
+      background-color: #F4746E;
     }
   }
 }
@@ -78,11 +77,27 @@
 .content-form {
   display: table;
   margin: 0 auto;
+  padding-top: 10px;
   background-color: white;
   border-radius: 10px;
 
-  label {
-    font-size: 12px;
+  .form-group {
+    margin: 10px;
+    display: flex;
+
+    label {
+      font-size: 12px;
+      color: #00557A;
+      text-align: left;
+
+      &.control-one-line {
+        line-height: 1;
+      }
+
+      .require {
+        color: red;
+      }
+    }
   }
 }
 
@@ -113,6 +128,15 @@
   .content-body {
     .tab-content {
       min-height: 320px;
+    }
+  }
+
+  // Footer
+  .content-footer {
+    margin-top: 30px;
+
+    p {
+      color: white;
     }
   }
 }
