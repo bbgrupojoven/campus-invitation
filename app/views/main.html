@@ -9,27 +9,71 @@
     </div>
   </div>
 
-  <div class="container ">
+  <div class="container content-body">
     <tabset type="pills">
       <tab heading="Info" active="false">Info</tab>
-      <tab heading="Detalle">Detalle</tab>
-      <tab heading="Registro">Registro</tab>
+      <tab heading="Detalle">
+        <b>Catálogo del curso</b>
+        El Catálogo del curso provee una breve descripción de los cursos ofrecidos por el Centro de Estudios, incluyendo los prerrequisitos, fechas y horas en las que se ofrece el curso, y los textos que se usan durante el curso.
+
+        <b>Estructura del Curso</b>
+        La Estructura del curso provee un plan de los temas claves que se cubrirán en cada curso.
+
+        <b>Servicios Estudiantiles</b>
+        El Centro de Estudios ofrece mucho más que clases en vivo. Pueden conocer más sobre algunos de los otros servicios, tales como el Foro Estudiantil, la Librería de Cabalá, y Convenciones de Cabalá aquí.
+
+        <b>Registro</b>
+        El primer paso para accesar a todo lo que ofrece el Centro de Estudios es el registro. Una vez registrados podrán inscribirse a los cursos, accesar al programa de Auto-estudio y participar en el Foro Estudiantil una vez iniciados los cursos
+      </tab>
+      <tab heading="Registro">
+        <form name="formRegistration" class="contact col-xs-6" ng-submit="register(student)">
+
+          <div class="form-group">
+            <label for="firstName" class="col-xs-2 control-label">Nombre</label>
+            <div class="col-xs-10">
+              <input ng-model="student.firstName" type="text" class="form-control" id="firstName" placeholder="Nombres">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="col-xs-2 control-label">Apellido</label>
+            <div class="col-xs-10">
+              <input ng-model="student.lastName" type="text" class="form-control" id="lastName" placeholder="Appellidos">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-xs-2 control-label">Correo Electrónico</label>
+            <div class="col-xs-10">
+              <input ng-model="student.lastName" type="text" class="form-control" id="email" placeholder="Appellidos">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName" class="col-xs-2 control-label">Apellido</label>
+            <div class="col-xs-10">
+              <input ng-model="student.lastName" type="text" class="form-control" id="lastName" placeholder="Appellidos">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-offset-2 col-xs-10">
+              <button type="submit" class="btn btn-default">Sign in</button>
+            </div>
+            <div class="h2 mb-20">
+              <a class="btn btn-register-campus" href="#">
+                Registrate
+              </a>
+            </div>
+
+          </div>
+
+
+        </form>
+      </tab>
     </tabset>
   </div>
 
   <div class="container content-footer text-center">
 
-    <form class=contact method=get action="/" accept-charset="UTF-8">
+    <p class="mb-35 subheading">AHORA ES EL MOMENTO MAS SIGNIFICATIVO DE TU VIDA ....SI TÚ LO PERMITES</p>
 
-      <div class="h2 mb-20">
-        <a class="btn btn-register-campus" href="#">
-          Registrate
-        </a>
-      </div>
-      <p class="mb-35">AHORA ES EL MOMENTO MAS SIGNIFICATIVO DE TU VIDA ....SI TÚ LO PERMITES</p>
-
-
-    </form>
   </div>
 </div>
 

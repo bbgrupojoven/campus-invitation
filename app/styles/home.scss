@@ -17,16 +17,7 @@
 }
 
 .content-footer {
-  margin-top: 700px;
-
-  a.btn-register-campus {
-    background-color: #F4342E;
-    color: white;
-  }
-
-  a.btn-register-campus:hover {
-    color: lightgrey;
-  }
+  margin-top: 10px;
 
   p {
     color: #0A4863;
@@ -66,6 +57,23 @@
   }
 }
 
+// Tab content
+.content-body {
+  .tab-content {
+    min-height: 550px;
+
+    a.btn-register-campus {
+      background-color: #F4342E;
+      color: white;
+    }
+
+    a.btn-register-campus:hover {
+      color: #F4342E;
+      background-color: white;
+    }
+  }
+}
+
 // Tablets and Phones
 @media (max-width: 767px) {
   h1 {
@@ -86,6 +94,13 @@
         font-size: small;
       }
 
+    }
+  }
+
+  // Tab content
+  .content-body {
+    .tab-content {
+      min-height: 320px;
     }
   }
 }
