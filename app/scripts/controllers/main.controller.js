@@ -11,7 +11,7 @@ angular.module('campusInvitationApp')
   .controller('MainCtrl', function (Registration, Locations) {
     var vm = this;
 
-    vm.submit = Registration.submit;
+    vm.submit = submit;
 
     // Load selection data.
     loadFormData();
@@ -19,5 +19,16 @@ angular.module('campusInvitationApp')
     function loadFormData() {
       vm.countries = Locations.countries();
       vm.cities = Locations.cities();
+    }
+
+    function submit(student) {
+      // Save the new student.
+      Registration.new(student)
+        .then(function(student) {
+          console.log(DS);
+          debugger;
+        }, function(error) {
+          console.log(error);
+        })
     }
   });

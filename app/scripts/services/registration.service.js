@@ -15,16 +15,8 @@ angular.module('campusInvitationApp')
      * @param student
      *  The student image
      */
-    this.submit = function (student) {
-      DS.create('student', student)
-        .then(function(student) {
-          console.log(DS);
-          debugger;
-        }, function(error) {
-          console.log(error);
-        });
-
+    this.new = function (student) {
+      return DS.create('student', student);
     };
-
 
   });

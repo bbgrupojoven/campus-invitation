@@ -23,7 +23,7 @@ angular
     'template/tabs/tabset.html',
     'js-data'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, DSFirebaseAdapterProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -33,13 +33,13 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+
+    DSFirebaseAdapterProvider.defaults.basePath = 'https://centrodeestudios.firebaseio.com/';
   })
-  .run(function(DS) {
-    // Check if already exist.
-
-
-    // Make
-    DS.registerAdapter('localforage', new DSLocalForageAdapter(), {default: true});
+  .run(function(DS, DSFirebaseAdapter) {
+    // Configure adapter.
+    DS.registerAdapter('firebase', DSFirebaseAdapter, { default: true });
 
     // DS is the result of `new JSData.DS()`
 
