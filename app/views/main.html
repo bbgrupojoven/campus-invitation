@@ -27,36 +27,40 @@
       </tab>
       <tab class="hidden" heading="Registro" active="true">
         <div class="content-form row">
-          <form name="formRegistration" class="contact" ng-submit="register(student)">
+          <form name="formRegistration" class="contact" ng-submit="vm.submit(vm.student)">
 
             <div class="form-group">
               <label for="firstName" class="col-xs-4 control-label">Nombre <span class="require">*</span></label>
               <div class="col-xs-8">
-                <input ng-model="student.firstName" type="text" class="form-control" id="firstName" placeholder="Nombres">
+                <input ng-model="vm.student.firstName" type="text" class="form-control" id="firstName" placeholder="Nombres" required>
               </div>
             </div>
             <div class="form-group">
               <label for="lastName" class="col-xs-4 control-label">Apellido <span class="require">*</span></label>
               <div class="col-xs-8">
-                <input ng-model="student.lastName" type="text" class="form-control" id="lastName" placeholder="Apellidos">
+                <input ng-model="vm.student.lastName" type="text" class="form-control" id="lastName" placeholder="Apellidos" required>
               </div>
             </div>
             <div class="form-group">
               <label for="email" class="col-xs-4 control-label control-one-line">Correo Electrónico <span class="require">*</span></label>
               <div class="col-xs-8">
-                <input ng-model="student.lastName" type="text" class="form-control" id="email" placeholder="Correo Electrónico">
+                <input ng-model="vm.student.email" type="email" class="form-control" id="email" placeholder="Correo Electrónico" required>
               </div>
             </div>
             <div class="form-group">
               <label class="col-xs-4 control-label">País <span class="require">*</span></label>
               <div class="col-xs-8">
-                <select class="form-control" ng-options="country in countries" ng-model="student.country"></select>
+                <select class="form-control" ng-options="country.code as country.name for country in vm.countries" ng-model="vm.student.country" required>
+                  <option></option>
+                </select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-xs-4 control-label">Ciudad <span class="require">*</span></label>
               <div class="col-xs-8">
-                <select class="form-control" ng-options="city in cities" ng-model="student.city"></select>
+                <select class="form-control" ng-options="city.id as city.name for city in vm.cities | filter:{country:vm.student.country}" ng-model="vm.student.city" ng-disabled="!vm.student.country" required>
+                  <option></option>
+                </select>
               </div>
             </div>
             <div class="form-group">
@@ -67,7 +71,6 @@
             </div>
 
           </form>
-
 
         </div>
 
