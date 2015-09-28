@@ -8,7 +8,7 @@
  * Controller of the campusInvitationApp
  */
 angular.module('campusInvitationApp')
-  .controller('MainCtrl', function (Registration, Locations) {
+  .controller('MainCtrl', function (Registration, Locations, Mail, Mandrill) {
     var vm = this;
 
     vm.submit = submit;
@@ -22,6 +22,7 @@ angular.module('campusInvitationApp')
     }
 
     function submit(student) {
+
       // Save the new student.
       Registration.new(student)
         .then(function(student) {
@@ -29,6 +30,18 @@ angular.module('campusInvitationApp')
           debugger;
         }, function(error) {
           console.log(error);
-        })
+        });
+
+      // Send Notification.
+      Mandrill.messages.send(Mail.toLearningCenter(student))
+        .success(function(response){
+          // Succes handling
+          console.log(response);
+          debugger;
+        }).error(function(error){
+          // Error handling
+          console.log(error);
+          debugger;
+        });
     }
   });
