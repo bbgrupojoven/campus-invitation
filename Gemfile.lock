@@ -8,6 +8,8 @@ GEM
       sass (~> 3.2.19)
     fssm (0.2.10)
     sass (3.2.19)
+    sass-css-importer (1.0.0.beta.0)
+      sass (>= 3.1)
 
 PLATFORMS
   ruby
@@ -15,6 +17,7 @@ PLATFORMS
 DEPENDENCIES
   compass
   sass
+  sass-css-importer
 
 BUNDLED WITH
    1.10.6

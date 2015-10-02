@@ -226,7 +226,12 @@ module.exports = function (grunt) {
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
-        raw: 'Sass::Script::Number.precision = 10\n'
+        raw: [
+          'Sass::Script::Number.precision = 10',
+          'add_import_path Sass::CssImporter::Importer.new("node_modules")',
+          '\n'
+        ].join('\n'),
+        require: 'sass-css-importer'
       },
       dist: {
         options: {
