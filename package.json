@@ -2,10 +2,12 @@
   "name": "campusinvitation",
   "private": true,
   "devDependencies": {
+    "btns": "^1.1.0",
     "cdnify": "^0.1.4",
     "coffee-script": "^1.10.0",
     "eventemitter2": "^0.4.14",
     "google-cdn": "^1.0.0",
+    "gradients": "^1.0.0",
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",
     "grunt-autoprefixer": "^2.2.0",
