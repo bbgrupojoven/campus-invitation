@@ -24,6 +24,16 @@
   }
 }
 
+.photos-courses {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    max-width: 9em;
+    margin-bottom: 1em;
+  }
+}
+
 // Tabs
 .nav {
   margin: 0 auto;
@@ -60,6 +70,11 @@
 .content-body {
   .tab-content {
     min-height: 550px;
+    display: flex;
+
+    .active {
+      display: inherit;
+    }
 
     .btn-register-campus {
       background-color: #F4342E;
@@ -77,9 +92,10 @@
 .content-container {
   display: table;
   margin: 0 auto;
-  padding-top: 10px;
+  padding: 10px;
   background-color: white;
   border-radius: 10px;
+  font-size: 12px;
 
   .form-group {
     margin: 10px;

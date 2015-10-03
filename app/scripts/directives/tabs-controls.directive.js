@@ -24,13 +24,6 @@ function tabsController() {
         activate: activate
       };
 
-      //debugger;
-      // Add method to change tabs by name.
-
-      // Add access tabs on each tab.
-      //angular.forEach(function(tab) {
-      //  angular.element(tab.$transcludeFn()[1]).scope().tabs = scope.vm.tabs;
-      //});
     }
   };
 }
