@@ -126,7 +126,27 @@
   // Tab content
   .content-body {
     .tab-content {
-      min-height: 320px;
+      min-height: 240px;
+      display: flex;
+
+      .active {
+        display: inherit;
+        width: 100%;
+
+        .content-container {
+          align-self: center;
+
+          &.content-container-transparent {
+            background-color: transparent;
+          }
+
+          button {
+            width: 230px;
+            height: 50px;
+            font-size: larger;
+          }
+        }
+      }
     }
   }
 
