@@ -12,15 +12,24 @@ angular.module('campusInvitationApp')
     var vm = this;
 
     vm.submit = submit;
+    vm.loadAbout = loadAbout;
 
     // Load selection data.
     loadFormData();
 
+    /**
+     * Preload countries and cities information.
+     */
     function loadFormData() {
       vm.countries = Locations.countries();
       vm.cities = Locations.cities();
     }
 
+    /**
+     * Save and send notifications the new student information.
+     *
+     * @param student
+     */
     function submit(student) {
       console.log($scope);
       debugger;
@@ -37,4 +46,12 @@ angular.module('campusInvitationApp')
         console.log(error);
       });
     }
+
+    /**
+     * Load the tab with the about information.
+     */
+    function loadAbout() {
+
+    }
+
   });

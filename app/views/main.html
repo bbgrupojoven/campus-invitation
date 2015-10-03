@@ -10,10 +10,10 @@
   </div>
 
   <div class="container content-body">
-    <tabset type="pills">
-      <tab class="hidden" heading="Inicio">
+    <tabset type="pills" tabs-controller>
+      <tab ng-model="vm.tabs" class="hidden" heading="Inicio">
         <div class="content-container content-container-transparent">
-          <button type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
+          <button ng-click="" type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
         </div>
       </tab>
       <tab class="" heading="¿Qué obtendrás?">
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div>
-          <button type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
+          <button ng-click="" type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
         </div>
       </tab>
       <tab class="" heading="¿Qué es el curso?" >
@@ -250,7 +250,7 @@
 
   <div class="container content-footer text-center">
     <p class="mb-15 subheading">AHORA ES EL MOMENTO MAS SIGNIFICATIVO DE TU VIDA ....SI TÚ LO PERMITES</p>
-    <img ng-click="" src="images/logo-bb.png" alt="Bnei Baruch Latino America"/>
+    <img class="logo-bb" ng-click="vm.tabsController.activate(4)" src="images/logo-bb.png" alt="Bnei Baruch Latino America"/>
   </div>
 </div>
 
