@@ -13,7 +13,7 @@
     <tabset type="pills" tabs-controller>
       <tab ng-model="vm.tabs" class="hidden" heading="Inicio">
         <div class="content-container content-container-transparent">
-          <button ng-click="" type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
+          <button ng-click="vm.tabsController.activate(3)" type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
         </div>
       </tab>
       <tab class="" heading="¿Qué obtendrás?">
@@ -70,7 +70,7 @@
           </div>
         </div>
         <div>
-          <button ng-click="" type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
+          <button ng-click="vm.tabsController.activate(3)" type="button" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
         </div>
       </tab>
       <tab class="" heading="¿Qué es el curso?" >
@@ -221,7 +221,7 @@
               </div>
             </div>
             <div class="form-group">
-              <div class="h2 mb-20 col-xs-12">
+              <div class="mb-20 col-xs-12">
                 <button type="submit" class="btn btn-register-campus bg-orange-gradient">Registrate Gratis</button>
               </div>
             </div>
