@@ -8,11 +8,11 @@
  * Controller of the campusInvitationApp
  */
 angular.module('campusInvitationApp')
-  .controller('MainCtrl', function ($q, $scope, Registration, Locations, Mail, Mandrill) {
+  .controller('MainCtrl', function ($q, $log, $filter, $scope, Registration, Locations, Mail, Mandrill) {
     var vm = this;
 
     vm.submit = submit;
-    vm.loadAbout = loadAbout;
+    vm.requireCity = requireCity;
 
     // Load selection data.
     loadFormData();
@@ -21,7 +21,7 @@ angular.module('campusInvitationApp')
      * Preload countries and cities information.
      */
     function loadFormData() {
-      vm.countries = Locations.countries();
+      countries();
       vm.cities = Locations.cities();
     }
 
@@ -48,10 +48,34 @@ angular.module('campusInvitationApp')
     }
 
     /**
-     * Load the tab with the about information.
+     * Load countries object.
      */
-    function loadAbout() {
+    function countries() {
 
+      Locations.countries()
+        .success(function(countries) {
+          vm.countries = countries;
+        })
+        .error(function(err) {
+          $log.error(err);
+        })
     }
+
+    /**
+     * Verify if the country selected is a south american country,
+     * if yes, return true otherwise return false.
+     *
+     * @param country
+     * @returns {boolean}
+     */
+    function requireCity(country) {
+      if (angular.isUndefined(vm.student) || angular.isUndefined(vm.student.country)) {
+        return false;
+      }
+
+      return $filter('filter')(vm.countries, {code: country}, true).pop().continent === 'SA';
+    }
+
+
 
   });

@@ -8,24 +8,16 @@
  * Service of the campusInvitationApp
  */
 angular.module('campusInvitationApp')
-  .service('Locations', function () {
+  .service('Locations', function ($http) {
+
     /**
-     * Return a list of countries
+     * Return a list of countries.
      *
      * @returns {*[]}
      *  List countries.
      */
     this.countries = function () {
-      return [
-        {
-          name: 'Venezuela',
-          code: 'VE'
-        },
-        {
-          name: 'Bolivia',
-          code: 'BO'
-        }
-      ];
+      return getCountries();
     };
 
     /**
@@ -61,5 +53,39 @@ angular.module('campusInvitationApp')
         }
       ];
     };
+
+    /**
+     * Return a json object with the continents and countries.
+     *
+     * @returns {*}
+     */
+    function getCountries() {
+      return $http({
+        method: 'GET',
+        url: 'https://raw.githubusercontent.com/bbgrupojoven/Countries/master/countries.json',
+        transformResponse: prepareCountries
+      });
+    }
+
+    /**
+     * Prepare the countries to the view need it.
+     *
+     * @param response
+     * @returns {Array}
+     */
+    function prepareCountries(response) {
+      response = angular.fromJson(response);
+      var countries = [];
+
+      angular.forEach(response.countries, function(country, key) {
+        this.push({
+          name: country.name,
+          code: key,
+          continent: country.continent
+        });
+      }, countries);
+
+      return countries;
+    }
 
   });
