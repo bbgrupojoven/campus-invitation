@@ -8,7 +8,9 @@
  * Service of the campusInvitationApp
  */
 angular.module('campusInvitationApp')
-  .service('Locations', function ($http) {
+  .service('Locations', function ($http, $filter) {
+    // Cache locations.
+    var locations = {};
 
     /**
      * Return a list of countries.
@@ -16,9 +18,8 @@ angular.module('campusInvitationApp')
      * @returns {*[]}
      *  List countries.
      */
-    this.countries = function () {
-      return getCountries();
-    };
+    this.countries = getCountries;
+
 
     /**
      * Return a list of cities by specific country.
@@ -54,6 +55,8 @@ angular.module('campusInvitationApp')
       ];
     };
 
+    this.isLatinAmerican = isLatinAmerican;
+
     /**
      * Return a json object with the continents and countries.
      *
@@ -75,6 +78,10 @@ angular.module('campusInvitationApp')
      */
     function prepareCountries(response) {
       response = angular.fromJson(response);
+
+      // add continents and countries.
+      angular.extend(locations, response);
+
       var countries = [];
 
       angular.forEach(response.countries, function(country, key) {
@@ -86,6 +93,14 @@ angular.module('campusInvitationApp')
       }, countries);
 
       return countries;
+    }
+
+
+    function isLatinAmerican(countrySelected) {
+      // Get the object.
+      var country = locations.countries[countrySelected];
+
+      return country.continent === 'SA' || country.continent === 'NA' && countrySelected !== 'US' && countrySelected !== 'CA';
     }
 
   });

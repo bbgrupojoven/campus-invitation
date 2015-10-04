@@ -73,7 +73,7 @@ angular.module('campusInvitationApp')
         return false;
       }
 
-      return $filter('filter')(vm.countries, {code: country}, true).pop().continent === 'SA';
+      return Locations.isLatinAmerican(country);
     }
 
 
