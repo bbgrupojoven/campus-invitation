@@ -82,6 +82,7 @@
     .btn-register-campus {
       background-color: #F4342E;
       color: white;
+      text-align: center;
     }
 
     .btn-register-campus:hover {
@@ -95,10 +96,21 @@
 .content-container {
   display: table;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px 25px;
   background-color: white;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 16px;
+  width: 660px;
+
+  &.content-container-transparent {
+    background-color: transparent;
+  }
+
+  button {
+    width: 230px;
+    height: 50px;
+    font-size: x-larger;
+  }
 
   .form-group {
     margin: 10px;
@@ -153,16 +165,7 @@
 
       .content-container {
         align-self: center;
-
-        &.content-container-transparent {
-          background-color: transparent;
-        }
-
-        button {
-          width: 230px;
-          height: 50px;
-          font-size: larger;
-        }
+        font-size: 12px;
       }
 
     }
@@ -178,5 +181,11 @@
   }
 }
 
+// Tablets and Phones
+@media (max-width: 360px) {
+  .content-container {
+    width: 260px;
+  }
+}
 
 
