@@ -74,6 +74,9 @@
 
     .active {
       display: inherit;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
     }
 
     .btn-register-campus {
@@ -147,26 +150,21 @@
   .content-body {
     .tab-content {
       min-height: 240px;
-      display: flex;
 
-      .active {
-        display: inherit;
-        width: 100%;
+      .content-container {
+        align-self: center;
 
-        .content-container {
-          align-self: center;
+        &.content-container-transparent {
+          background-color: transparent;
+        }
 
-          &.content-container-transparent {
-            background-color: transparent;
-          }
-
-          button {
-            width: 230px;
-            height: 50px;
-            font-size: larger;
-          }
+        button {
+          width: 230px;
+          height: 50px;
+          font-size: larger;
         }
       }
+
     }
   }
 
