@@ -228,6 +228,12 @@
                   </select>
                 </div>
               </div>
+              <div class="form-group" ng-if="vm.requireCity(vm.student.country)">
+                <label class="col-xs-4 control-label">Ciudad <span class="require">*</span></label>
+                <div class="col-xs-8">
+                  <selectize config='vm.citiesSel.config' options='vm.citiesSel.options' ng-model="vm.citySel"></selectize>
+                </div>
+              </div>
               <div class="form-group">
                 <div class="mb-20 col-xs-12">
                   <button type="submit" class="btn btn-register-campus bg-orange-gradient">Regístrate Gratis</button>

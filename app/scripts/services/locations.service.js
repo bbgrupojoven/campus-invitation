@@ -20,6 +20,7 @@ angular.module('campusInvitationApp')
      */
     this.countries = getCountries;
 
+    this.isLatinAmerican = isLatinAmerican;
 
     /**
      * Return a list of cities by specific country.
@@ -34,28 +35,27 @@ angular.module('campusInvitationApp')
       return [
         {
           id: 1,
-          name: 'Caracas',
+          title: 'Caracas',
           country: 'VE'
         },
         {
           id: 2,
-          name: 'Valencia',
+          title: 'Valencia',
           country: 'VE'
         },
         {
           id: 3,
-          name: 'La Paz',
+          title: 'La Paz',
           country: 'BO'
         },
         {
           id: 4,
-          name: 'Sucre',
+          title: 'Sucre',
           country: 'BO'
         }
       ];
     };
 
-    this.isLatinAmerican = isLatinAmerican;
 
     /**
      * Return a json object with the continents and countries.
