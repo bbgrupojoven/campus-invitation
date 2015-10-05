@@ -95,7 +95,12 @@ angular.module('campusInvitationApp')
       return countries;
     }
 
-
+    /**
+     * Return true if the selected country is a latinamerican country, otherwise false.
+     *
+     * @param countrySelected
+     * @returns {boolean}
+     */
     function isLatinAmerican(countrySelected) {
       // Get the object.
       var country = locations.countries[countrySelected];
