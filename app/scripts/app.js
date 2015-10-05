@@ -22,7 +22,8 @@ angular
     'template/tabs/tab.html',
     'template/tabs/tabset.html',
     'js-data',
-    'angular-mandrill'
+    'angular-mandrill',
+    'selectize'
   ])
   .config(function ($routeProvider, DSFirebaseAdapterProvider, MandrillProvider) {
     $routeProvider
