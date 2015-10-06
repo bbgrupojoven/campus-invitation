@@ -471,10 +471,27 @@ module.exports = function (grunt) {
           branch: 'build'
         }
       }
+    },
+
+    // do not store credentials in the git repo, store them separately and read from a secret file
+    secret: grunt.file.readJSON('config.json'),
+    environments: {
+      options: {
+        local_path: 'dist'
+      },
+      production: {
+        options: {
+          host: '<%= secret.production.host %>',
+          username: '<%= secret.production.username %>',
+          password: '<%= secret.production.password %>',
+          port: '<%= secret.production.port %>',
+          releases_to_keep: '5',
+          //release_subdir: 'myapp'
+        }
+      }
     }
 
   });
-
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -532,5 +549,10 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', [
     'build',
     'buildcontrol'
+  ]);
+
+  grunt.registerTask('production', [
+    'build',
+    'environments:production'
   ]);
 };
