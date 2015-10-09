@@ -220,18 +220,12 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group" ng-if="vm.requireCity(vm.student.country)">
+              <div class="form-group" ng-if="false">
                 <label class="col-xs-4 control-label">Ciudad <span class="require">*</span></label>
                 <div class="col-xs-8">
                   <select class="form-control" ng-options="city.id as city.name for city in vm.cities | filter:{country:vm.student.country}" ng-model="vm.student.city" ng-disabled="!vm.student.country" required>
                     <option></option>
                   </select>
-                </div>
-              </div>
-              <div class="form-group" ng-if="vm.requireCity(vm.student.country)">
-                <label class="col-xs-4 control-label">Ciudad <span class="require">*</span></label>
-                <div class="col-xs-8">
-                  <selectize config='vm.citiesSel.config' options='vm.citiesSel.options' ng-model="vm.citySel"></selectize>
                 </div>
               </div>
               <div class="form-group">
