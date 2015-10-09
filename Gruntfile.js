@@ -21,6 +21,7 @@ module.exports = function (grunt) {
   });
 
   // Load deploy task libraries.
+  grunt.loadNpmTasks('grunt-ssh-deploy');
   grunt.loadNpmTasks('grunt-build-control');
 
   // Configurable paths for the application
@@ -477,16 +478,15 @@ module.exports = function (grunt) {
     secret: grunt.file.readJSON('config.json'),
     environments: {
       options: {
-        local_path: 'dist'
+        'local_path': 'dist',
+        'deploy-path': '/home/124944/users/.home/domains/cursocabala.info/html'
       },
       production: {
         options: {
-          host: '<%= secret.production.host %>',
-          username: '<%= secret.production.username %>',
-          password: '<%= secret.production.password %>',
-          port: '<%= secret.production.port %>',
-          releases_to_keep: '5',
-          //release_subdir: 'myapp'
+          'host': '<%= secret.production.host %>',
+          'username': '<%= secret.production.username %>',
+          'password': '<%= secret.production.password %>',
+          'port': '<%= secret.production.port %>'
         }
       }
     }
@@ -553,6 +553,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('production', [
     'build',
-    'environments:production'
+    'ssh_deploy:production'
   ]);
 };
