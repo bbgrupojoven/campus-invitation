@@ -24,6 +24,16 @@
   }
 }
 
+.photos-courses {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    max-width: 9em;
+    margin-bottom: 1em;
+  }
+}
+
 // Tabs
 .nav {
   margin: 0 auto;
@@ -31,7 +41,7 @@
 
   li {
     margin: 10px 80px;
-    width: 100px;
+    width: auto;
 
     a {
       background-color: white;
@@ -60,10 +70,19 @@
 .content-body {
   .tab-content {
     min-height: 550px;
+    display: flex;
+
+    .active {
+      display: inherit;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+    }
 
     .btn-register-campus {
       background-color: #F4342E;
       color: white;
+      text-align: center;
     }
 
     .btn-register-campus:hover {
@@ -74,12 +93,24 @@
 }
 
 // Content Form
-.content-form {
+.content-container {
   display: table;
   margin: 0 auto;
-  padding-top: 10px;
+  padding: 20px 25px;
   background-color: white;
   border-radius: 10px;
+  font-size: 16px;
+  width: 660px;
+
+  &.content-container-transparent {
+    background-color: transparent;
+  }
+
+  button {
+    width: 230px;
+    height: 50px;
+    font-size: x-larger;
+  }
 
   .form-group {
     margin: 10px;
@@ -101,6 +132,10 @@
   }
 }
 
+.logo-bb {
+  border-radius: 10px;
+}
+
 // Tablets and Phones
 @media (max-width: 767px) {
   h1 {
@@ -114,7 +149,6 @@
   .nav {
     li {
       margin: 10px 15px;
-      width: 70px;
 
       a {
         padding: 10px 10px;
@@ -127,7 +161,13 @@
   // Tab content
   .content-body {
     .tab-content {
-      min-height: 320px;
+      min-height: 240px;
+
+      .content-container {
+        align-self: center;
+        font-size: 12px;
+      }
+
     }
   }
 
@@ -141,5 +181,11 @@
   }
 }
 
+// Tablets and Phones
+@media (max-width: 360px) {
+  .content-container {
+    width: 260px;
+  }
+}
 
 

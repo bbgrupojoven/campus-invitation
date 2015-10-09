@@ -8,27 +8,74 @@
  * Controller of the campusInvitationApp
  */
 angular.module('campusInvitationApp')
-  .controller('MainCtrl', function (Registration, Locations) {
+  .controller('MainCtrl', function ($q, $log, $filter, $scope, Registration, Locations, Mail, Mandrill) {
     var vm = this;
 
     vm.submit = submit;
+    vm.requireCity = requireCity;
 
     // Load selection data.
     loadFormData();
 
+    /**
+     * Preload countries and cities information.
+     */
     function loadFormData() {
-      vm.countries = Locations.countries();
+      countries();
       vm.cities = Locations.cities();
     }
 
+    /**
+     * Save and send notifications the new student information.
+     *
+     * @param student
+     */
     function submit(student) {
-      // Save the new student.
-      Registration.new(student)
-        .then(function(student) {
-          console.log(DS);
-          debugger;
-        }, function(error) {
-          console.log(error);
+      console.log($scope);
+      debugger;
+      // Save and notify the information.
+      $q.all({
+        // Save the new student.
+        registry: Registration.new(student),
+        // Send Notification.
+        notify: Mandrill.messages.send(Mail.toLearningCenter(student))
+      }).then(function(response) {
+        vm.status = 'success';
+        debugger;
+      }, function(error) {
+        console.log(error);
+      });
+    }
+
+    /**
+     * Load countries object.
+     */
+    function countries() {
+
+      Locations.countries()
+        .success(function(countries) {
+          vm.countries = countries;
+        })
+        .error(function(err) {
+          $log.error(err);
         })
     }
+
+    /**
+     * Verify if the country selected is a south american country,
+     * if yes, return true otherwise return false.
+     *
+     * @param country
+     * @returns {boolean}
+     */
+    function requireCity(country) {
+      if (angular.isUndefined(vm.student) || angular.isUndefined(vm.student.country)) {
+        return false;
+      }
+
+      return Locations.isLatinAmerican(country);
+    }
+
+
+
   });

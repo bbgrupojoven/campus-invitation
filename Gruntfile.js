@@ -21,6 +21,7 @@ module.exports = function (grunt) {
   });
 
   // Load deploy task libraries.
+  grunt.loadNpmTasks('grunt-ssh-deploy');
   grunt.loadNpmTasks('grunt-build-control');
 
   // Configurable paths for the application
@@ -226,7 +227,12 @@ module.exports = function (grunt) {
         httpFontsPath: '/styles/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
-        raw: 'Sass::Script::Number.precision = 10\n'
+        raw: [
+          'Sass::Script::Number.precision = 10',
+          'add_import_path Sass::CssImporter::Importer.new("node_modules")',
+          '\n'
+        ].join('\n'),
+        require: 'sass-css-importer'
       },
       dist: {
         options: {
@@ -466,10 +472,26 @@ module.exports = function (grunt) {
           branch: 'build'
         }
       }
+    },
+
+    // do not store credentials in the git repo, store them separately and read from a secret file
+    secret: grunt.file.readJSON('config.json'),
+    environments: {
+      options: {
+        'local_path': 'dist',
+        'deploy-path': '/home/124944/users/.home/domains/cursocabala.info/html'
+      },
+      production: {
+        options: {
+          'host': '<%= secret.production.host %>',
+          'username': '<%= secret.production.username %>',
+          'password': '<%= secret.production.password %>',
+          'port': '<%= secret.production.port %>'
+        }
+      }
     }
 
   });
-
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -527,5 +549,10 @@ module.exports = function (grunt) {
   grunt.registerTask('deploy', [
     'build',
     'buildcontrol'
+  ]);
+
+  grunt.registerTask('production', [
+    'build',
+    'ssh_deploy:production'
   ]);
 };

@@ -21,9 +21,11 @@ angular
     'ui.bootstrap.tabs',
     'template/tabs/tab.html',
     'template/tabs/tabset.html',
-    'js-data'
+    'js-data',
+    'angular-mandrill',
+    'selectize'
   ])
-  .config(function ($routeProvider, DSFirebaseAdapterProvider) {
+  .config(function ($routeProvider, DSFirebaseAdapterProvider, MandrillProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -34,8 +36,11 @@ angular
         redirectTo: '/'
       });
 
-
+    // Set data server.
     DSFirebaseAdapterProvider.defaults.basePath = 'https://centrodeestudios.firebaseio.com/';
+
+    // Set notification service.
+    MandrillProvider.setApiKey('qfs05hqLxFmpN2Y2CRwC3Q');
   })
   .run(function(DS, DSFirebaseAdapter) {
     // Configure adapter.
