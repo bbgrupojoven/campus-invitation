@@ -453,6 +453,9 @@ module.exports = function (grunt) {
       }
     },
 
+    // do not store credentials in the git repo, store them separately and read from a secret file
+    secret: grunt.file.readJSON('config.json'),
+
     buildcontrol: {
       options: {
         dir: 'dist',
@@ -469,13 +472,17 @@ module.exports = function (grunt) {
       local: {
         options: {
           remote: '../',
-          branch: 'build'
+          branch: 'local'
+        }
+      },
+      live: {
+        options: {
+          remote: 'bblatino+bbalatinamerica.org@ssss:domains/cursocabala.info/html/.git',
+          branch: 'live'
         }
       }
     },
 
-    // do not store credentials in the git repo, store them separately and read from a secret file
-    secret: grunt.file.readJSON('config.json'),
     environments: {
       options: {
         'local_path': 'dist',
@@ -553,6 +560,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('production', [
     'build',
-    'ssh_deploy:production'
+    'buildcontrol:production'
   ]);
 };
