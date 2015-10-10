@@ -85,3 +85,5 @@ Temporary Items
 
 
 config.json
+
+app/scripts/app.config.js

@@ -31,8 +31,7 @@ angular.module('campusInvitationApp')
      * @param student
      */
     function submit(student) {
-      console.log($scope);
-      debugger;
+
       // Save and notify the information.
       $q.all({
         // Save the new student.
@@ -41,7 +40,6 @@ angular.module('campusInvitationApp')
         notify: Mandrill.messages.send(Mail.toLearningCenter(student))
       }).then(function(response) {
         vm.status = 'success';
-        debugger;
       }, function(error) {
         console.log(error);
       });
