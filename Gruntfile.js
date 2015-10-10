@@ -468,7 +468,7 @@ module.exports = function (grunt) {
       },
       live: {
         options: {
-          remote: 'cabalachile.com@s124944.gridserver.com:domains/cursocabala/html/.git',
+          remote: 'cabalachile.com@s124944.gridserver.com:domains/cursocabala.info/html/.git',
           branch: 'build'
         }
       }
