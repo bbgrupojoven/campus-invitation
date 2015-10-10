@@ -482,8 +482,8 @@ module.exports = function (grunt) {
         }]
       },
       dist: {
-        src: ['<%= yeoman.dist %>/scripts/scripts.js'],
-        overwrite: true,
+        src: ['config/template.config.js'],
+        dest: '<%= yeoman.app %>/scripts/app.config.js',
         replacements: [{
           from: /fireUrl/,
           to: '<%= config.live.firebase %>'
@@ -524,6 +524,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'replace:server',
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
@@ -539,7 +540,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'replace:server',
     'wiredep',
     'concurrent:test',
     'autoprefixer',
@@ -549,7 +549,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'copy:config',
+    'replace:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -558,7 +558,6 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'replace:dist',
     //'cdnify',
     'cssmin',
     'uglify',
