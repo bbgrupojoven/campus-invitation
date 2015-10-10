@@ -10,6 +10,7 @@
  */
 angular
   .module('campusInvitationApp', [
+    'campusInvitationApp.config',
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -25,7 +26,8 @@ angular
     'angular-mandrill',
     'selectize'
   ])
-  .config(function ($routeProvider, DSFirebaseAdapterProvider, MandrillProvider) {
+  .config(function ($routeProvider, DSFirebaseAdapterProvider, MandrillProvider, Config) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -37,10 +39,10 @@ angular
       });
 
     // Set data server.
-    DSFirebaseAdapterProvider.defaults.basePath = 'https://centrodeestudios.firebaseio.com/';
+    DSFirebaseAdapterProvider.defaults.basePath = Config.firebase;
 
     // Set notification service.
-    MandrillProvider.setApiKey('qfs05hqLxFmpN2Y2CRwC3Q');
+    MandrillProvider.setApiKey(Config.mandrill);
   })
   .run(function(DS, DSFirebaseAdapter) {
     // Configure adapter.

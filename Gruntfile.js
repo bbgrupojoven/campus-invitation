@@ -21,7 +21,7 @@ module.exports = function (grunt) {
   });
 
   // Load deploy task libraries.
-  grunt.loadNpmTasks('grunt-ssh-deploy');
+  grunt.loadNpmTasks('grunt-text-replace');
   grunt.loadNpmTasks('grunt-build-control');
 
   // Configurable paths for the application
@@ -150,12 +150,21 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
+            '<%= yeoman.app %>/scripts/app.config.js',
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git{,*/}*'
           ]
         }]
       },
-      server: '.tmp'
+      server: {
+        files: [{
+          dor: true,
+          src: [
+            '.tmp',
+            '<%= yeoman.app %>/scripts/app.config.js'
+          ]
+        }]
+      }
     },
 
     // Add vendor prefixed styles
@@ -395,6 +404,10 @@ module.exports = function (grunt) {
 
     // Copies remaining files to places other tasks can use
     copy: {
+      config: {
+        src: 'config/template.config.js',
+        dest: '<%= yeoman.app %>/scripts/app.config.js'
+      },
       dist: {
         files: [{
           expand: true,
@@ -453,6 +466,34 @@ module.exports = function (grunt) {
       }
     },
 
+    config: grunt.file.readJSON('config.json'),
+
+    // Get configuration file
+    replace: {
+      server: {
+        src: ['config/template.config.js'],
+        dest: '<%= yeoman.app %>/scripts/app.config.js',
+        replacements: [{
+          from: /fireUrl/,
+          to: '<%= config.local.firebase %>'
+        },{
+          from: /mandrillApi/,
+          to: '<%= config.local.mandrill %>'
+        }]
+      },
+      dist: {
+        src: ['<%= yeoman.dist %>/scripts/scripts.js'],
+        overwrite: true,
+        replacements: [{
+          from: /fireUrl/,
+          to: '<%= config.live.firebase %>'
+        },{
+          from: /mandrillApi/,
+          to: '<%= config.live.mandrill %>'
+        }]
+      }
+    },
+
     buildcontrol: {
       options: {
         dir: 'dist',
@@ -470,23 +511,6 @@ module.exports = function (grunt) {
         options: {
           remote: 'cabalachile.com@s124944.gridserver.com:domains/cursocabala.info/html/.git',
           branch: 'build'
-        }
-      }
-    },
-
-    // do not store credentials in the git repo, store them separately and read from a secret file
-    secret: grunt.file.readJSON('config.json'),
-    environments: {
-      options: {
-        'local_path': 'dist',
-        'deploy-path': '/home/124944/users/.home/domains/cursocabala.info/html'
-      },
-      production: {
-        options: {
-          'host': '<%= secret.production.host %>',
-          'username': '<%= secret.production.username %>',
-          'password': '<%= secret.production.password %>',
-          'port': '<%= secret.production.port %>'
         }
       }
     }
@@ -515,6 +539,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'replace:server',
     'wiredep',
     'concurrent:test',
     'autoprefixer',
@@ -524,6 +549,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'copy:config',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -532,6 +558,7 @@ module.exports = function (grunt) {
     'concat',
     'ngAnnotate',
     'copy:dist',
+    'replace:dist',
     //'cdnify',
     'cssmin',
     'uglify',

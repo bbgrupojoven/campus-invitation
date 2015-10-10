@@ -1,11 +1,11 @@
 {
-  "producction":  {
-    "host": "",
-    "port": "",
-    "username": "^1.3.0",
-    "password": "^1.3.0",
-    "deploy-path": "~0.13.4",
-    "before_deploy": "cd /sites/great_project/releases/current && forever stopall",
-    "after_deploy": "cd /sites/great_project/releases/current && npm install && forever start app.js"
+  "local":  {
+    "firebase": "https://server/",
+    "mandrill": "key"
+  },
+  "live":  {
+    "firebase": "https://server/",
+    "deploy": "url",
+    "mandrill": "key"
   }
 }
