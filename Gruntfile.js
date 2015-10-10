@@ -466,9 +466,9 @@ module.exports = function (grunt) {
           branch: 'gh-pages'
         }
       },
-      local: {
+      live: {
         options: {
-          remote: '../',
+          remote: 'cabalachile.com@s124944.gridserver.com:domains/cursocabala/html.git',
           branch: 'build'
         }
       }
@@ -551,8 +551,8 @@ module.exports = function (grunt) {
     'buildcontrol'
   ]);
 
-  grunt.registerTask('production', [
+  grunt.registerTask('deploy:live', [
     'build',
-    'ssh_deploy:production'
+    'buildcontrol:live'
   ]);
 };
