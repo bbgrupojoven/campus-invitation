@@ -39,19 +39,11 @@ angular.module('campusInvitationApp')
         // Send Notification.
         notify: Mandrill.messages.send(Mail.toLearningCenter(student))
       }).then(function(response) {
-
         vm.status = 'success';
       }, function(error) {
         console.log(error);
-      }).finally(function() {
-        // Set form at initial state.
-        vm.formRegistration.$setPristine();
-
-        // Clear the form.
-        vm.student = {};
       });
     }
-
 
     /**
      * Load countries object.
