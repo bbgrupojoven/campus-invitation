@@ -186,6 +186,12 @@
       </tab>
       <tab class="hidden" heading="Form">
         <div class="content-container">
+          <div class="alert alert-success">
+            Ha sido registrado en el curso gratuito de cabalá.
+          </div>
+          <div class="alert alert-danger">
+            Ha ocurrido un error, durante el registro al curso de cabalá gratis. 
+          </div>
           <div class="">
             <p class="text-left col-xs-12">
               Para completar tu registro en el curso, llena el formulario con tus datos y presionar el "Regístrate Gratis"
@@ -230,7 +236,7 @@
               </div>
               <div class="form-group">
                 <div class="mb-20 col-xs-12">
-                  <button type="submit" class="btn btn-register-campus bg-orange-gradient">Regístrate Gratis</button>
+                  <button ng-disabled="vm.formRegistration.$submitted" type="submit" class="btn btn-register-campus bg-orange-gradient">Regístrate Gratis</button>
                 </div>
               </div>
             </form>
