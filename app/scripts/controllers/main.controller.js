@@ -31,6 +31,7 @@ angular.module('campusInvitationApp')
      * @param student
      */
     function submit(student) {
+      vm.status = 'saving';
 
       // Save and notify the information.
       $q.all({
@@ -42,6 +43,7 @@ angular.module('campusInvitationApp')
 
         vm.status = 'success';
       }, function(error) {
+        vm.status = 'error';
         console.log(error);
       }).finally(function() {
         // Set form at initial state.
@@ -81,7 +83,6 @@ angular.module('campusInvitationApp')
 
       return Locations.isLatinAmerican(country);
     }
-
 
 
   });
