@@ -37,10 +37,10 @@ angular.module('campusInvitationApp')
       $q.all({
         // Save the new student.
         registry: Registration.new(student),
-        // Send Notification.
-        notify: Mandrill.messages.send(Mail.toLearningCenter(student))
+        // Send Notifications.
+        notify: Mandrill.messages.send(Mail.toLearningCenter(student)),
+        notifyStudent: Mandrill.messages.send(Mail.toStudent(student))
       }).then(function(response) {
-
         vm.status = 'success';
       }, function(error) {
         vm.status = 'error';
