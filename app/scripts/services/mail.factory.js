@@ -38,7 +38,8 @@ angular.module('campusInvitationApp')
       // Message.
       content: {},
       // Methods.
-      toLearningCenter: toLearningCenter
+      toLearningCenter: toLearningCenter,
+      toStudent: toStudent
     };
 
     /**
@@ -61,6 +62,33 @@ angular.module('campusInvitationApp')
             {
               'name': 'Centro de Estudios Latino America',
               'email': 'centrodeestudios@bblatinamerica.org',
+              'type': 'to'
+            }
+          ]
+        }
+      }
+    }
+
+    /**
+     * Return a message with with tinformation of the new student register in the learning center.
+     *
+     * @param student
+     *  New Student information
+     * @returns {{message: {html: string, text: string, subject: string, from_email: *, from_name: string, to: *[]}}}
+     */
+    function toStudent(student) {
+      return this.content = {
+        'message': {
+          'html': '<h1>Felicitaciones, ' + student.firstName + ' ' + student.lastName + '</h1>' +
+          '<p>Te has registrado en el curso de cabalá, te enviaremos un nuevo correo con mas detalle sobre el curso. </p>',
+          'text': 'Felicitaciones, ' + student.firstName + ' ' + student.lastName + ', te has registrado en el curso de cabalá, te enviaremos un nuevo correo con mas detalle sobre el curso.',
+          'subject': 'Registro Exitoso al curso de cabalá',
+          'from_email': 'centrodeestudios@bblatinamerica.org',
+          'from_name': 'Centro de Estudios Latino America',
+          'to': [
+            {
+              'name': student.firstName + ' ' + student.lastName,
+              'email': student.email,
               'type': 'to'
             }
           ]
